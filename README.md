@@ -1,2 +1,2 @@
 # git-builder
-helper to build and package git from source
+A Helper for building and packaging git from source

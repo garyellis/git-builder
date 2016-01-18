@@ -1,0 +1,9 @@
+FROM ubuntu:14.04
+
+RUN mkdir /data
+
+VOLUME /data
+
+ADD scripts /root
+
+CMD ["/root/git-build.sh"]

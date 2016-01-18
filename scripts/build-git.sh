@@ -43,11 +43,11 @@ apt_update(){
     # update apt cache when it hasn't been updated in last two hours
     two_hours_seconds=7200
     last_two_hours_seconds=$(( $(date +%s) - $two_hours_seconds ))
-    if [ $(stat --format=%Y /var/lib/apt/periodic/update-success-stamp ) -le $last_two_hours_seconds ]; then
+#    if [ $(stat --format=%Y /var/lib/apt/periodic/update-success-stamp ) -le $last_two_hours_seconds ]; then
         echo "    updating apt cache"
         apt-get -q update
-        bail_on_error $?
-    fi
+#        bail_on_error $?
+#    fi
 }
 
 install_git_deps_centos(){
@@ -302,7 +302,7 @@ bail_on_error $? \
               "    packaging failed. exiting"
 
 
-echo "==> moving package to configured dest dir: $PACKAGE_OUT_DIR/$PACKAGE_FILENAME"
+echo "==> moving package to configured dest dir: $PACKAGE_OUT_DIR"
 mkdir -p $PACKAGE_OUT_DIR
 # delimeters in filename are different across .deb and .rpm. quick patchup for now
 PACKAGE_FILENAME=$(find $PWD -name "*.${PACKAGE_TYPE}")

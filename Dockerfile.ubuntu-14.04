@@ -6,4 +6,4 @@ VOLUME /data
 
 ADD scripts /root
 
-CMD ["/root/git-build.sh"]
+CMD ["/root/build-git.sh"]

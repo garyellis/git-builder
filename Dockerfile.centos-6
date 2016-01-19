@@ -1,9 +1,0 @@
-FROM centos:6
-
-RUN mkdir /data
-
-VOLUME /data
-
-ADD scripts /root
-
-CMD ["/root/build-git.sh"]

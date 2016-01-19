@@ -1,0 +1,11 @@
+---
+
+boxes:
+- box: ubuntu/trusty64
+  hostname: docker-box
+  ip: 172.168.1.10
+  cpus: 2
+  memory: 1024
+  ansible_playbook: tests/ansible/bootstrap.yml
+  ansible_galaxy_requirements: tests/ansible/roles/requirements.yml
+  ansible_roles_path: tests/ansible/roles

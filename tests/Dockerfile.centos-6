@@ -1,0 +1,9 @@
+FROM centos:6
+
+# install upstart to run the container os
+RUN yum -y install upstart
+
+RUN mkdir -p /run
+VOLUME /run
+
+CMD ["/sbin/init"]

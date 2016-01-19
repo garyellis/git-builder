@@ -1,0 +1,26 @@
+---
+# disable container based infrastructure - image build and run are in before install and script steps (in vm)
+sudo: required
+
+env:
+  global:
+    env_args: "GIT_VERSION=2.7.0 PACKAGE_OUT_DIR=/run"
+  matrix:
+    - distro: centos
+      vers: 6
+      image_tag: git-rpm
+    - distro: ubuntu
+      vers: 14.04
+      image_tag: git-deb
+
+
+services:
+  - docker
+
+before_install:
+  - docker build --rm=true --file=tests/Dockerfile.${distro}-${vers} --tag=${distro}-${vers}:${image_tag} tests
+
+script:
+  - container_id=$(docker run --detach --volume="${PWD}":/run ${distro}-${vers}:${image_tag})
+  - docker exec --tty ${container_id} env ${env_args} env ${env_args} /run/scripts/build-git.sh
+  - docker stop ${container_id}

@@ -1,0 +1,7 @@
+---
+
+ - name: install a docker daemon
+   hosts: all
+   sudo: yes
+   roles:
+   - angstwad.docker_ubuntu

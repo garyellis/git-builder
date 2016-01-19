@@ -3,16 +3,23 @@
 sudo: required
 
 env:
-  global:
-    - env_args: "GIT_VERSION=2.6.0 PACKAGE_OUT_DIR=/run"
-    - env_args: "GIT_VERSION=2.7.0 PACKAGE_OUT_DIR=/run"
-  matrix:
-    - distro: centos
-      vers: 6
-      image_tag: git-rpm
-    - distro: ubuntu
-      vers: 14.04
-      image_tag: git-deb
+  - distro: centos
+    vers: 6
+    image_tag: git-rpm
+    env_args: "GIT_VERSION=2.6.0 PACKAGE_OUT_DIR=/run"
+  - distro: centos
+    vers: 6
+    image_tag: git-rpm
+    env_args: "GIT_VERSION=2.7.0 PACKAGE_OUT_DIR=/run"
+  - distro: ubuntu
+    vers: 14.04
+    image_tag: git-deb
+    env_args: "GIT_VERSION=2.6.0 PACKAGE_OUT_DIR=/run"
+  - distro: ubuntu
+    vers: 14.04
+    image_tag: git-deb
+    env_args: "GIT_VERSION=2.7.0 PACKAGE_OUT_DIR=/run"
+
 
 
 services:

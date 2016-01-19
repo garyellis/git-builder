@@ -4,7 +4,8 @@ sudo: required
 
 env:
   global:
-    env_args: "GIT_VERSION=2.7.0 PACKAGE_OUT_DIR=/run"
+    - env_args: "GIT_VERSION=2.6.0 PACKAGE_OUT_DIR=/run"
+    - env_args: "GIT_VERSION=2.7.0 PACKAGE_OUT_DIR=/run"
   matrix:
     - distro: centos
       vers: 6
